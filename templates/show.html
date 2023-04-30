@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Điểm của bạn</h1>
+    {% if data %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Literature</th>
+                    <th>Math</th>
+                    <th>English</th>
+                    <th>Physics</th>
+                    <th>Chemistry</th>
+                    <th>Biology</th>
+                    <th>History</th>
+                    <th>Geography</th>
+                    <th>Total</th>
+                    <th>Equivalent Total</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ data['studentID'] }}</td>
+                    <td>{{ data['literature'] }}</td>
+                    <td>{{ data['math'] }}</td>
+                    <td>{{ data['english'] }}</td>
+                    <td>{{ data['physics'] }}</td>
+                    <td>{{ data['chemistry'] }}</td>
+                    <td>{{ data['biology'] }}</td>
+                    <td>{{ data['history'] }}</td>
+                    <td>{{ data['geography'] }}</td>
+                    <td>{{ data['total'] }}</td>
+                    <td>{{ data['equi'] }}</td>
+                    <td>{{ data['year'] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% else %}
+        <p>Data not found.</p>
+    {% endif %}
+    <p>Gợi ý chọn trường dựa theo điểm chuẩn năm 2021</p>
+    <table>
+        <thead>
+            <tr>
+                <th>UniCode</th>
+                <th>UniName</th>
+                <th>MajorCode</th>
+                <th>MajorName</th>
+                <th>SubjectGroup</th>
+                <th>BenchMark</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data['rows'] %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+                <td>{{ row[6] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
