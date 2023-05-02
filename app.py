@@ -93,7 +93,6 @@ def get_data():
         rows = cursor.fetchall()
         res['rows']=rows
         return render_template('show.html', data=res)
-        return res
     else:
         return 'Data not found'
 

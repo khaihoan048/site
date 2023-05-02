@@ -1,11 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <style>
+table {
+    border-collapse: collapse;
+    width: 80%; /* Adjust the width as desired */
+    margin: auto; /* Center the table horizontally */
+    margin-bottom: 2em;
+    background-color: #f2f2f2;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden; /* Hide the border-radius overflow */
+}
+
+th, td {
+    text-align: center;
+    padding: 0.5em;
+    border-bottom: 1px solid #a01818;
+    border-radius: 0; /* Remove the bottom border-radius */
+}
+
+th {
+    font-weight: bold;
+    background-color: #f2f2f2;
+    border-radius: 10px 10px 0 0;
+}
+
+
+
+tr:last-child td {
+    border-radius: 0 0 10px 10px;
+}
+
+/* Add rounded corners to the entire page */
+body {
+    border-radius: 10px;
+    overflow: hidden; /* Hide the border-radius overflow */
+}
+
+/* Use a darker background color */
+body {
+    margin: auto; /* Center the table horizontally */
+    background-color: #f2f2f2;
+}
+body {
+            font-family: 'Open Sans', sans-serif;
+            color: #444;
+            background-color: #f7f7f7;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 1em;
+            color: #008080;
+        }
+
+/* Use a brighter color for the header */
+h1 {
+    margin: auto; /* Center the table horizontally */
+    color: #000000;
+}
+
+/* Use a darker color for the table borders */
+th, td {
+    border-bottom: 1px solid #7f1414;
+}
+
+
+    </style>
 </head>
 <body>
-    <h1>Điểm của bạn</h1>
-    {% if data %}
+    <header>
+        <h1>Điểm của bạn</h1>
+    </header>
+    <main>
+        {% if data %}
         <table>
             <thead>
                 <tr>
@@ -40,35 +113,35 @@
                 </tr>
             </tbody>
         </table>
-    {% else %}
+        {% else %}
         <p>Data not found.</p>
-    {% endif %}
-    <p>Gợi ý chọn trường dựa theo điểm chuẩn năm 2021</p>
-    <table>
-        <thead>
-            <tr>
-                <th>UniCode</th>
-                <th>UniName</th>
-                <th>MajorCode</th>
-                <th>MajorName</th>
-                <th>SubjectGroup</th>
-                <th>BenchMark</th>
-                <th>Year</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in data['rows'] %}
-            <tr>
-                <td>{{ row[0] }}</td>
-                <td>{{ row[1] }}</td>
-                <td>{{ row[2] }}</td>
-                <td>{{ row[3] }}</td>
-                <td>{{ row[4] }}</td>
-                <td>{{ row[5] }}</td>
-                <td>{{ row[6] }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+        {% endif %}
+        <p>Gợi ý chọn trường dựa theo điểm chuẩn năm 2021</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>UniCode</th>
+                    <th>UniName</th>
+                    <th>MajorCode</th>
+                    <th>MajorName</th>
+                    <th>SubjectGroup</th>
+                    <th>BenchMark</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data['rows'] %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                    <td>{{ row[3] }}</td>
+                    <td>{{ row[4] }}</td>
+                    <td>{{ row[5] }}</td>
+                    <td>{{ row[6] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+    </html>

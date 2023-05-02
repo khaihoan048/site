@@ -2,24 +2,145 @@
 <html>
 <head>
     <title>Get Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 50px;
+    }
+    
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+    
+    select {
+        margin-bottom: 30px;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Get Info</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+css
+Copy code
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 50px;
+    }
+    
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-top: 50px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 16px;
+        color: #333;
+    }
+    
+    input[type="number"],
+    select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    
+    button[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+    
+    select {
+        margin-bottom: 30px;
+    }
+</style>
 </head>
 <body>
     <h1>Get Info</h1>
     <form action="/get-data" method="GET">
         <label for="id">Enter ID:</label>
         <input type="number" id="id" name="id" required>
+        <label for="group">Exam Group:</label>
+        <select id="group" name="group">
+            <option value="A00">A00</option>
+            <option value="A01">A01</option>
+            <option value="B00">B00</option>
+            <option value="C00">C00</option>
+            <option value="D01">D01</option>
+            <option value="D07">D07</option>
+        </select>
         <button type="submit">Submit</button>
-    
-  <label for="group">Khối thi</label>
-  <select id="group" name="group">
-    <option value="A00">A00</option>
-    <option value="A01">A01</option>
-    <option value="B00">B00</option>
-    <option value="C00">C00</option>
-    <option value="D01">D01</option>
-    <option value="D07">D07</option>
-  </select><br>
-</form>
-
+    </form>
 </body>
-</html>
+</html> 
