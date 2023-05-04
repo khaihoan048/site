@@ -129,9 +129,11 @@ Copy code
 <body>
     <h1>Get Info</h1>
     <form action="/get-data" method="GET">
-        <label for="id">Enter ID:</label>
+        <label for="id">Số báo danh</label>
         <input type="number" id="id" name="id" required>
-        <label for="group">Exam Group:</label>
+        <label for="diemcong">Điểm ưu tiên</label>
+        <input type="number" step="0.01" id="diemcong" name="diemcong" required>
+        <label for="group">Khối thi</label>
         <select id="group" name="group">
             <option value="A00">A00</option>
             <option value="A01">A01</option>

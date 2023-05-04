@@ -20,6 +20,7 @@ def get_data():
     # get the studentID from the query parameters
     student_id = request.args.get('id')
     code=   request.args.get('group')
+    bonus=request.args.get('diemcong')
     groups = {
         "A00": ["math", "physics", "chemistry"],
         "A01": ["math", "physics", "english"],
@@ -84,8 +85,8 @@ def get_data():
             equi=(agrs[subject]["std"]/agrs[subject]["stdnow"])*(curent-agrs[subject]["meannow"])+agrs[subject]["mean"]
             total+=curent
             equitot+=equi
-        # print(total)
-        # print(equitot)
+        total+=float(bonus)
+        equitot+=float(bonus)
         res['total']=total
         res['equi']= f"{equitot:.2f}"
         query = "SELECT * FROM university WHERE Year = 2021 AND SubjectGroup = %s AND BenchMark < %s ORDER BY BenchMark DESC LIMIT 10;"
