@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <style>
 table {
+    overflow: auto;
     border-collapse: collapse;
     width: 80%; /* Adjust the width as desired */
     margin: auto; /* Center the table horizontally */
@@ -16,9 +17,13 @@ table {
     border-radius: 10px;
     overflow: hidden; /* Hide the border-radius overflow */
 }
-
+p {
+        text-align: center; /* Change "center" to "left" or "right" as desired */
+    }
+    h1 {
+        text-align: center; /* Change "center" to "left" or "right" as desired */
+    }
 th, td {
-    text-align: center;
     padding: 0.5em;
     border-bottom: 1px solid #a01818;
     border-radius: 0; /* Remove the bottom border-radius */
@@ -48,6 +53,7 @@ body {
     background-color: #f2f2f2;
 }
 body {
+            overflow: auto;
             font-family: 'Open Sans', sans-serif;
             color: #444;
             background-color: #f7f7f7;
@@ -69,30 +75,48 @@ h1 {
 th, td {
     border-bottom: 1px solid #7f1414;
 }
+.container {
+			max-width: 800px; /* Set maximum width for container */
+			margin: 0 auto; /* Center container horizontally */
+			padding: 0 20px; /* Add left and right padding */
+		}
+.info-box {
+			background-color: #f2f2f2;
+			border: 1px solid #ccc;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin-bottom: 20px;
+		}
+		.info-box h2 {
+			margin-top: 0;
+		}
+        .info-box p {
+            text-align: left;
+            margin-top: 0;
+        }
 
 
     </style>
 </head>
 <body>
-    <header>
-        <h1>Điểm của bạn</h1>
-    </header>
+
     <main>
         {% if data %}
         <table>
             <thead>
                 <tr>
-                    <th>Student ID</th>
-                    <th>Literature</th>
-                    <th>Math</th>
-                    <th>English</th>
-                    <th>Physics</th>
-                    <th>Chemistry</th>
-                    <th>Biology</th>
-                    <th>History</th>
-                    <th>Geography</th>
-                    <th>Total</th>
-                    <th>Equivalent Total</th>
+                    <th>Số báo danh</th>
+                    <th>Văn</th>
+                    <th>Toán</th>
+                    <th>Ngoại ngữ</th>
+                    <th>Vật lí</th>
+                    <th>Hóa học</th>
+                    <th>Sinh học</th>
+                    <th>Lịch sử</th>
+                    <th>Địa lý</th>
+                    <th>GDCD</th>
+
                     <th>Year</th>
                 </tr>
             </thead>
@@ -107,8 +131,8 @@ th, td {
                     <td>{{ data['biology'] }}</td>
                     <td>{{ data['history'] }}</td>
                     <td>{{ data['geography'] }}</td>
-                    <td>{{ data['total'] }}</td>
-                    <td>{{ data['equi'] }}</td>
+                    <td>{{data['civil']}}</td>
+
                     <td>{{ data['year'] }}</td>
                 </tr>
             </tbody>
@@ -116,17 +140,25 @@ th, td {
         {% else %}
         <p>Data not found.</p>
         {% endif %}
+        <div class="container">
+            <div class="info-box">
+                <h2>Điểm của bạn</h2>
+                <p>Điểm khối {{ data['group'] }} của bạn là: {{data['now'][0]}}+{{data['now'][1]}}+{{data['now'][2]}}+{{data['plus']}}={{data['total']}}</p>
+                <p>Điểm tương đương với năm 2021 của bạn là: {{data['then'][0]}}+{{data['then'][1]}}+{{data['then'][2]}}+{{data['plus']}}={{data['equi']}}</p>
+
+            </div>
+        </div>
         <p>Gợi ý chọn trường dựa theo điểm chuẩn năm 2021</p>
         <table>
             <thead>
                 <tr>
-                    <th>UniCode</th>
-                    <th>UniName</th>
-                    <th>MajorCode</th>
-                    <th>MajorName</th>
-                    <th>SubjectGroup</th>
-                    <th>BenchMark</th>
-                    <th>Year</th>
+                    <th>Mã trường</th>
+                    <th>Tên trường</th>
+                    <th>Mã ngành</th>
+                    <th>Tên ngành</th>
+                    <th>Khối</th>
+                    <th>Điểm chuẩn</th>
+                    <th>Năm</th>
                 </tr>
             </thead>
             <tbody>

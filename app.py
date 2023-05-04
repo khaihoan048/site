@@ -71,28 +71,36 @@ def get_data():
             'literature': row[1],
             'math': row[2],
             'english': row[3],
-            'physics': row[4],
-            'chemistry': row[5],
-            'biology': row[6],
-            'history': row[7],
-            'geography': row[8],
-            'year': row[11]
+            'physics': row[4] if row[4] else 0,
+            'chemistry': row[5] if row[5] else 0,
+            'biology': row[6] if row[6] else 0,
+            'history': row[7] if row[7] else 0,
+            'geography': row[8] if row[8] else 0,
+            'civil': row[9] if row [9] else 0,
+            'year': row[11],
+            'now':[],
+            'then':[]
         }
         total=0
         equitot=0
         for subject in groups[code]:
             curent=float(res[subject])
             equi=(agrs[subject]["std"]/agrs[subject]["stdnow"])*(curent-agrs[subject]["meannow"])+agrs[subject]["mean"]
+            equi= round(equi,2)
+            res['now'].append(curent)
+            res['then'].append(equi)
             total+=curent
             equitot+=equi
         total+=float(bonus)
         equitot+=float(bonus)
         res['total']=total
         res['equi']= f"{equitot:.2f}"
-        query = "SELECT * FROM university WHERE Year = 2021 AND SubjectGroup = %s AND BenchMark < %s ORDER BY BenchMark DESC LIMIT 10;"
-        cursor.execute(query, (code, equitot))
+        query = "SELECT * FROM university WHERE Year = 2021 AND SubjectGroup = %s AND BenchMark < %s and BenchMark > %s ORDER BY BenchMark DESC;"
+        cursor.execute(query, (code, equitot+0.25,equitot-1))
         rows = cursor.fetchall()
         res['rows']=rows
+        res['group']=code
+        res['plus']=bonus
         return render_template('show.html', data=res)
     else:
         return 'Data not found'
